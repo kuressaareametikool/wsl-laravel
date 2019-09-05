@@ -4,5 +4,8 @@ This is a setup script for Windows Subsystem Linux environment running on Ubuntu
 #How to use
 1. Setup WSL on your Windows PC -> https://docs.microsoft.com/en-us/windows/wsl/install-win10
 2. Clone this repo to your home foler
-```cd ~/
-git clone github.com/kuressaareametikool/wsl-laravel```
+
+```
+cd ~/
+git clone git@github.com:kuressaareametikool/wsl-laravel.git ./
+```
