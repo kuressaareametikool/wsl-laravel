@@ -19,7 +19,7 @@ sudo chmod +x setup.sh
 ```
 5. Run the script
 ```
-sudo ./setup.sh
+sudo setup.sh
 ```
 6. When install is done open http://localhost on your Windows 10 browser
 
