@@ -1,5 +1,5 @@
 # WSL Setup script for laravel dev env
-This is a setup script for Windows Subsystem Linux environment running on Ubuntu 18.04 LTS. This script installs nginx, mariadb, php7.3 and composer with all the modules necessary for Laravel 6 to run. 
+This is a setup script for Windows Subsystem Linux environment running on Ubuntu 18.04 LTS. This script installs nginx, mariadb, php7.3, nodejs, yarn and composer with all the modules necessary for Laravel 6 to run. 
 
 # How to use
 1. Setup WSL on your Windows PC -> https://docs.microsoft.com/en-us/windows/wsl/install-win10
@@ -19,7 +19,7 @@ sudo chmod +x setup.sh
 ```
 5. Run the script
 ```
-sudo setup.sh
+sudo './setup.sh'
 ```
 6. When install is done open http://localhost on your Windows 10 browser
 

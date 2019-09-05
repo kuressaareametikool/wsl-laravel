@@ -5,11 +5,11 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-DEBIAN_FRONTEND=noninteractive
+export DEBIAN_FRONTEND=noninteractive
 
 #Update
 apt update -y
-apt upgrade -y --force-yes
+apt upgrade -y
 
 #Add repos
 apt-add-repository ppa:nginx/stable -y
@@ -17,9 +17,6 @@ apt-add-repository ppa:ondrej/php -y
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-apt-get install software-properties-common -y
-apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mirror.netinch.com/pub/mariadb/repo/10.4/ubuntu bionic main'
 
 apt-get update -y
 
