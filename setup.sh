@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo DEBIAN_FRONTEND=noninteractive
+
 #Update
 sudo apt update -y
 sudo apt upgrade -y --force-yes
@@ -12,7 +14,7 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get install software-properties-common -y
 sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mariadb.nethub.com.hk/repo/10.4/ubuntu bionic main'
+sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mirror.netinch.com/pub/mariadb/repo/10.4/ubuntu bionic main'
 
 sudo apt-get update -y
 
