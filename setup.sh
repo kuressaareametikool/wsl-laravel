@@ -2,7 +2,7 @@
 
 #Update
 sudo apt update -y
-sudo apt upgrade -y --force-yes -qq
+sudo apt upgrade -y --force-yes
 
 #Add repos
 sudo apt-add-repository ppa:nginx/stable -y
