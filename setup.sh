@@ -7,6 +7,9 @@ sudo apt upgrade -y --force-yes
 #Add repos
 sudo apt-add-repository ppa:nginx/stable -y
 sudo apt-add-repository ppa:ondrej/php -y
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get install software-properties-common -y
 sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
 sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mariadb.nethub.com.hk/repo/10.4/ubuntu bionic main'
@@ -14,7 +17,7 @@ sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mariadb.nethub.co
 sudo apt-get update -y
 
 #Install packages
-sudo apt install mariadb-server nginx php7.3-mbstring php7.3-xml php7.3-bcmath php7.3-fpm php7.3-mysql php7.3-zip unzip -y
+sudo apt install mariadb-server nginx php7.3-mbstring php7.3-xml php7.3-bcmath php7.3-fpm php7.3-mysql php7.3-zip unzip nodejs yarn -y
 
 #Install Composer
 cd ~
