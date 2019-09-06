@@ -19,7 +19,8 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
         sudo chown -R www-data.www-data /var/www/laravel/storage
         sudo chown -R www-data.www-data /var/www/laravel/bootstrap/cache
     else
-        mkdir -p ~/laravel/public
+        mkdir -p ~/laravel
+        sudo chown -R rando.www-data ~/laravel
         sudo mv ~/laravel /var/www/
     fi
     
