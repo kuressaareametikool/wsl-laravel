@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo export DEBIAN_FRONTEND=noninteractive
+sudo 'export DEBIAN_FRONTEND=noninteractive'
 
 #Update
 sudo apt update -y
