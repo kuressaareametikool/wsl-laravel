@@ -1,10 +1,11 @@
 #!/bin/bash
 
-read -p "Do you wish use Laravel?(y/n)" answer
+read -p "Do you wish to use Laravel?(y/n)" answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     read -p "Do you also want install Laravel?(y/n)" install
 fi
 
+sudo chmod +x install.sh
 sudo './install.sh'
 
 #Configute nginx
@@ -14,15 +15,14 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
     if [ "$install" != "${install#[Yy]}" ] ;then
         #Create Laravel Project
         composer create-project --prefer-dist laravel/laravel
+        sudo mv laravel /var/www/
+        sudo chown -R www-data.www-data /var/www/laravel/storage
+        sudo chown -R www-data.www-data /var/www/laravel/bootstrap/cache
     else
-        mkdir laravel/public
+        mkdir -p ~/laravel/public
+        sudo mv laravel /var/www/
     fi
-
-    #Move Laravel to correct location
-    sudo mv laravel /var/www/
-    sudo chown -R www-data.www-data /var/www/laravel/storage
-    sudo chown -R www-data.www-data /var/www/laravel/bootstrap/cache
-
+    
     sudo mv ~/wsl-laravel/laravel /etc/nginx/sites-available/
     sudo ln -s /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/
 else
