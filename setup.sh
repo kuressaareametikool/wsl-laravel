@@ -5,6 +5,7 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+
 export DEBIAN_FRONTEND=noninteractive
 
 #Update
@@ -33,6 +34,7 @@ composer create-project --prefer-dist laravel/laravel
 
 #Move Laravel to correct location
 mv laravel /var/www/
+chown -R $USER.www-data /var/www/laravel
 chown -R www-data.www-data /var/www/laravel/storage
 chown -R www-data.www-data /var/www/laravel/bootstrap/cache
 
@@ -86,3 +88,5 @@ UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root' AND p
 FLUSH PRIVILEGES;
 EOF
 exit
+
+cd /var/www/laravel
