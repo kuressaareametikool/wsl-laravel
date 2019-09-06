@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DEBIAN_FRONTEND=noninteractive
+sudo export DEBIAN_FRONTEND=noninteractive
 
 #Update
 sudo apt update -y
@@ -33,42 +33,7 @@ sudo chown -R www-data.www-data /var/www/laravel/storage
 sudo chown -R www-data.www-data /var/www/laravel/bootstrap/cache
 
 #Configute nginx
-sudo cat > /etc/nginx/sites-available/laravel <<'EOF'
-server {
-    listen 80;
-    server_name localhost;
-    root /var/www/laravel/public;
-
-    add_header X-Frame-Options "SAMEORIGIN";
-    add_header X-XSS-Protection "1; mode=block";
-    add_header X-Content-Type-Options "nosniff";
-
-    index index.html index.htm index.php;
-
-    charset utf-8;
-
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location = /robots.txt  { access_log off; log_not_found off; }
-
-    error_page 404 /index.php;
-
-    location ~ \.php$ {
-        fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-
-    location ~ /\.(?!well-known).* {
-        deny all;
-    }
-}
-EOF
-
+sudo mv ~/wsl-laravel/laravel /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/
 sudo unlink /etc/nginx/sites-enabled/default
 
