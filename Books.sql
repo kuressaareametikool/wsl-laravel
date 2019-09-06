@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.3.14-MariaDB)
 # Database: Books
-# Generation Time: 2019-09-06 13:19:39 +0000
+# Generation Time: 2019-09-06 13:28:46 +0000
 # ************************************************************
 
 
@@ -20,22 +20,22 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table yl21_Authors
+# Dump of table authors
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `yl21_Authors`;
+DROP TABLE IF EXISTS `authors`;
 
-CREATE TABLE `yl21_Authors` (
+CREATE TABLE `authors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `yl21_Authors` WRITE;
-/*!40000 ALTER TABLE `yl21_Authors` DISABLE KEYS */;
+LOCK TABLES `authors` WRITE;
+/*!40000 ALTER TABLE `authors` DISABLE KEYS */;
 
-INSERT INTO `yl21_Authors` (`id`, `first_name`, `last_name`)
+INSERT INTO `authors` (`id`, `first_name`, `last_name`)
 VALUES
 	(1,'Cristin','Spur'),
 	(2,'Madonna','Rehm'),
@@ -1338,30 +1338,30 @@ VALUES
 	(1299,'Lauryn','Carabet'),
 	(1300,'Hersch','Ashbrook');
 
-/*!40000 ALTER TABLE `yl21_Authors` ENABLE KEYS */;
+/*!40000 ALTER TABLE `authors` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-# Dump of table yl21_Book_Authors
+# Dump of table book_authors
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `yl21_Book_Authors`;
+DROP TABLE IF EXISTS `book_authors`;
 
-CREATE TABLE `yl21_Book_Authors` (
+CREATE TABLE `book_authors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `book_id` int(11) NOT NULL,
   `author_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_yl21_Books_has_yl21_Authors_yl21_Authors1_idx` (`author_id`),
   KEY `fk_yl21_Books_has_yl21_Authors_yl21_Books_idx` (`book_id`),
-  CONSTRAINT `fk_yl21_Books_has_yl21_Authors_yl21_Authors1` FOREIGN KEY (`author_id`) REFERENCES `yl21_Authors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_yl21_Books_has_yl21_Authors_yl21_Books` FOREIGN KEY (`book_id`) REFERENCES `yl21_Books` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_yl21_Books_has_yl21_Authors_yl21_Authors1` FOREIGN KEY (`author_id`) REFERENCES `authors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_yl21_Books_has_yl21_Authors_yl21_Books` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `yl21_Book_Authors` WRITE;
-/*!40000 ALTER TABLE `yl21_Book_Authors` DISABLE KEYS */;
+LOCK TABLES `book_authors` WRITE;
+/*!40000 ALTER TABLE `book_authors` DISABLE KEYS */;
 
-INSERT INTO `yl21_Book_Authors` (`id`, `book_id`, `author_id`)
+INSERT INTO `book_authors` (`id`, `book_id`, `author_id`)
 VALUES
 	(1,1,964),
 	(2,2,61),
@@ -3740,16 +3740,16 @@ VALUES
 	(2375,2225,828),
 	(2376,2226,416);
 
-/*!40000 ALTER TABLE `yl21_Book_Authors` ENABLE KEYS */;
+/*!40000 ALTER TABLE `book_authors` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-# Dump of table yl21_Books
+# Dump of table books
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `yl21_Books`;
+DROP TABLE IF EXISTS `books`;
 
-CREATE TABLE `yl21_Books` (
+CREATE TABLE `books` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `release_date` year(4) NOT NULL,
@@ -3763,10 +3763,10 @@ CREATE TABLE `yl21_Books` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `yl21_Books` WRITE;
-/*!40000 ALTER TABLE `yl21_Books` DISABLE KEYS */;
+LOCK TABLES `books` WRITE;
+/*!40000 ALTER TABLE `books` DISABLE KEYS */;
 
-INSERT INTO `yl21_Books` (`id`, `title`, `release_date`, `cover_path`, `language`, `summary`, `price`, `stock_saldo`, `pages`, `type`)
+INSERT INTO `books` (`id`, `title`, `release_date`, `cover_path`, `language`, `summary`, `price`, `stock_saldo`, `pages`, `type`)
 VALUES
 	(1,'Sticky Fingers of Time, The','1997','http://dummyimage.com/216x237.png/ff4444/ffffff','Swahili','Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit.',2.6300,'223',804,'ebook'),
 	(2,'Batman & Robin','2000','http://dummyimage.com/186x101.bmp/5fa2dd/ffffff','Czech','Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt.',56.4600,'382',1048,'ebook'),
@@ -4419,7 +4419,7 @@ VALUES
 	(649,'Scream of Fear (a.k.a. Taste of Fear)','1994','http://dummyimage.com/202x168.bmp/ff4444/ffffff','Lao','Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis.',6.3800,'500',432,'ebook'),
 	(650,'Before Sunrise','2009','http://dummyimage.com/122x228.bmp/dddddd/000000','Chinese','Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus.',9.3400,'401',315,'used');
 
-INSERT INTO `yl21_Books` (`id`, `title`, `release_date`, `cover_path`, `language`, `summary`, `price`, `stock_saldo`, `pages`, `type`)
+INSERT INTO `books` (`id`, `title`, `release_date`, `cover_path`, `language`, `summary`, `price`, `stock_saldo`, `pages`, `type`)
 VALUES
 	(651,'Metrobranding','1991','http://dummyimage.com/238x180.png/cc0000/ffffff','Swedish','Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.',48.9200,'258',591,'used'),
 	(652,'Wadjda','2005','http://dummyimage.com/233x174.jpg/5fa2dd/ffffff','Croatian','Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.',38.2300,'85',711,'new'),
@@ -5072,7 +5072,7 @@ VALUES
 	(1299,'Road to Utopia','2000','http://dummyimage.com/217x218.jpg/ff4444/ffffff','Italian','Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus.',55.9000,'149',755,'new'),
 	(1300,'Time to Kill, A','1986','http://dummyimage.com/233x137.jpg/5fa2dd/ffffff','Bengali','Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo.',13.5400,'390',900,'new');
 
-INSERT INTO `yl21_Books` (`id`, `title`, `release_date`, `cover_path`, `language`, `summary`, `price`, `stock_saldo`, `pages`, `type`)
+INSERT INTO `books` (`id`, `title`, `release_date`, `cover_path`, `language`, `summary`, `price`, `stock_saldo`, `pages`, `type`)
 VALUES
 	(1301,'Inglorious Bastards (Quel maledetto treno blindato)','2011','http://dummyimage.com/212x223.jpg/cc0000/ffffff','Azeri','Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.',15.0600,'424',272,'new'),
 	(1302,'Native Son','1995','http://dummyimage.com/166x205.bmp/cc0000/ffffff','Hungarian','Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.',20.7400,'112',731,'used'),
@@ -5722,7 +5722,7 @@ VALUES
 	(1946,'Paper Planes','1996','http://dummyimage.com/204x213.png/5fa2dd/ffffff','Macedonian','Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.',44.2400,'446',218,'new'),
 	(1947,'Million Dollar Mystery','1992','http://dummyimage.com/145x220.bmp/ff4444/ffffff','Bengali','Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.',46.7100,'134',649,'used');
 
-INSERT INTO `yl21_Books` (`id`, `title`, `release_date`, `cover_path`, `language`, `summary`, `price`, `stock_saldo`, `pages`, `type`)
+INSERT INTO `books` (`id`, `title`, `release_date`, `cover_path`, `language`, `summary`, `price`, `stock_saldo`, `pages`, `type`)
 VALUES
 	(1948,'All American Orgy (Cummings Farm)','1997','http://dummyimage.com/137x125.bmp/5fa2dd/ffffff','Luxembourgish','Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.',17.3900,'247',1182,'new'),
 	(1949,'Cat Returns, The (Neko no ongaeshi)','2004','http://dummyimage.com/100x126.png/cc0000/ffffff','Bengali','Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.',22.2700,'243',942,'ebook'),
@@ -6004,16 +6004,16 @@ VALUES
 	(2225,'Phantasm III: Lord of the Dead','2007','http://dummyimage.com/121x180.png/cc0000/ffffff','Maltese','Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus.',18.7300,'257',468,'used'),
 	(2226,'Neil Young: Heart of Gold','2006','http://dummyimage.com/109x113.jpg/cc0000/ffffff','Luxembourgish','In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.',44.3800,'344',955,'used');
 
-/*!40000 ALTER TABLE `yl21_Books` ENABLE KEYS */;
+/*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-# Dump of table yl21_Clients
+# Dump of table clients
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `yl21_Clients`;
+DROP TABLE IF EXISTS `clients`;
 
-CREATE TABLE `yl21_Clients` (
+CREATE TABLE `clients` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `first_name` varchar(45) DEFAULT NULL,
@@ -6024,10 +6024,10 @@ CREATE TABLE `yl21_Clients` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `yl21_Clients` WRITE;
-/*!40000 ALTER TABLE `yl21_Clients` DISABLE KEYS */;
+LOCK TABLES `clients` WRITE;
+/*!40000 ALTER TABLE `clients` DISABLE KEYS */;
 
-INSERT INTO `yl21_Clients` (`id`, `username`, `first_name`, `last_name`, `email`, `password`, `address`)
+INSERT INTO `clients` (`id`, `username`, `first_name`, `last_name`, `email`, `password`, `address`)
 VALUES
 	(1,'rlilywhite0','Roxie','Lilywhite','rlilywhite0@sourceforge.net','10 Cambridge Way',NULL),
 	(2,'mdomelaw1','Morgan','Domelaw','mdomelaw1@vkontakte.ru','5166 Banding Road',NULL),
@@ -8030,16 +8030,16 @@ VALUES
 	(1999,'fspeererq','Forrest','Speere','fspeererq@typepad.com','4345 Katie Terrace',NULL),
 	(2000,'gmellodyrr','Gard','Mellody','gmellodyrr@4shared.com','8 David Trail',NULL);
 
-/*!40000 ALTER TABLE `yl21_Clients` ENABLE KEYS */;
+/*!40000 ALTER TABLE `clients` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-# Dump of table yl21_Orders
+# Dump of table orders
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `yl21_Orders`;
+DROP TABLE IF EXISTS `orders`;
 
-CREATE TABLE `yl21_Orders` (
+CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `delivery_address` varchar(255) NOT NULL,
   `order_date` datetime NOT NULL,
@@ -8049,14 +8049,14 @@ CREATE TABLE `yl21_Orders` (
   PRIMARY KEY (`id`),
   KEY `fk_yl21_Orders_yl21_Clients1_idx` (`client_id`),
   KEY `fk_yl21_Orders_yl21_Books1_idx` (`book_id`),
-  CONSTRAINT `fk_yl21_Orders_yl21_Books1` FOREIGN KEY (`book_id`) REFERENCES `yl21_Books` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_yl21_Orders_yl21_Clients1` FOREIGN KEY (`client_id`) REFERENCES `yl21_Clients` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_yl21_Orders_yl21_Books1` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_yl21_Orders_yl21_Clients1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `yl21_Orders` WRITE;
-/*!40000 ALTER TABLE `yl21_Orders` DISABLE KEYS */;
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 
-INSERT INTO `yl21_Orders` (`id`, `delivery_address`, `order_date`, `status`, `client_id`, `book_id`)
+INSERT INTO `orders` (`id`, `delivery_address`, `order_date`, `status`, `client_id`, `book_id`)
 VALUES
 	(1,'2323 Chinook Plaza','2015-12-03 00:00:00','sent',558,427),
 	(2,'9 Saint Paul Point','2015-02-13 00:00:00','sent',299,163),
@@ -10359,7 +10359,7 @@ VALUES
 	(2299,'6146 Bultman Circle','2017-10-03 00:00:00','ordered',1473,2024),
 	(2300,'5 Burning Wood Parkway','2017-10-01 00:00:00','ordered',1791,1687);
 
-/*!40000 ALTER TABLE `yl21_Orders` ENABLE KEYS */;
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
