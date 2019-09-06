@@ -40,7 +40,7 @@ server {
 
 	root /var/www/html;
 
-	index.php index index.html index.htm index.nginx-debian.html;
+	index index.html index.htm index.nginx-debian.html index.php;
 
 	server_name _;
 

@@ -19,7 +19,7 @@ sudo chmod +x setup.sh
 ```
 5. Run the script
 ```
-sudo './setup.sh'
+./setup.sh
 ```
 6. When install is done open http://localhost on your Windows 10 browser
 
@@ -29,9 +29,20 @@ It's also possible to use VS Code directly form Ubuntu. Go to any folder and typ
 code .
 ``` 
 If VS Code is installed on your PC it should open automatically and offer to install the WSL extension. Click on Install and you should be good to go.
+
+# PHP
+
+If you choose not to install Laravel then a basic modern PHP stack will be installed. Nginx will then serve the site from 
+```
+/var/www/html
+```
+
+# MariaDB
+Latest version of MariaDB is also installed with a demo database of Books.
+
 # Laravel
-Laravel will be installed into
+When you choose to install Laravel you have two options. First one is to create the basic structure so you can clone your own repo and the second option is to install a whole new version. The new version will be installed to: 
 ```
 /var/www/laravel
 ```
-Nginx is configured to serve the site from the `public` dir
+With both options Nginx is configured to serve the site from the `/var/www/laravel/public` dir.
