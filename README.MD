@@ -28,7 +28,7 @@ It's also possible to use VS Code directly form Ubuntu. Go to any folder and typ
 ```
 code .
 ``` 
-If VS Code is installed on your PC it should open automatically and offer to install the WSL extension. Click Install on you should be good to go.
+If VS Code is installed on your PC it should open automatically and offer to install the WSL extension. Click on Install and you should be good to go.
 # Laravel
 Laravel will be installed into
 ```
