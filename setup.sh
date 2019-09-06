@@ -11,6 +11,8 @@ sudo './install.sh'
 #Configute nginx
 sudo unlink /etc/nginx/sites-enabled/default
 
+cd ~
+
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     if [ "$install" != "${install#[Yy]}" ] ;then
         #Create Laravel Project
