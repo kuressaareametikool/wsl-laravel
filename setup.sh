@@ -1,45 +1,39 @@
 #!/bin/bash
 
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
-  exit
-fi
-
-
 export DEBIAN_FRONTEND=noninteractive
 
 #Update
-apt update -y
-apt upgrade -y
+sudo apt update -y
+sudo apt upgrade -y
 
 #Add repos
-apt-add-repository ppa:nginx/stable -y
-apt-add-repository ppa:ondrej/php -y
+sudo apt-add-repository ppa:nginx/stable -y
+sudo apt-add-repository ppa:ondrej/php -y
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-apt-get update -y
+sudo apt-get update -y
 
 #Install packages
-apt install mariadb-server nginx php7.3-mbstring php7.3-xml php7.3-bcmath php7.3-fpm php7.3-mysql php7.3-zip unzip nodejs yarn -y
+sudo apt install mariadb-server nginx php7.3-mbstring php7.3-xml php7.3-bcmath php7.3-fpm php7.3-mysql php7.3-zip unzip nodejs yarn -y
 
 #Install Composer
 cd ~
 curl -sS https://getcomposer.org/installer -o composer-setup.php
-php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 #Create Laravel Project
 composer create-project --prefer-dist laravel/laravel
 
 #Move Laravel to correct location
-mv laravel /var/www/
-chown -R $USER.www-data /var/www/laravel
-chown -R www-data.www-data /var/www/laravel/storage
-chown -R www-data.www-data /var/www/laravel/bootstrap/cache
+sudo mv laravel /var/www/
+sudo chown -R $USER.www-data /var/www/laravel
+sudo chown -R www-data.www-data /var/www/laravel/storage
+sudo chown -R www-data.www-data /var/www/laravel/bootstrap/cache
 
 #Configute nginx
-cat > /etc/nginx/sites-available/laravel <<'EOF'
+sudo cat > /etc/nginx/sites-available/laravel <<'EOF'
 server {
     listen 80;
     server_name localhost;
@@ -75,13 +69,13 @@ server {
 }
 EOF
 
-ln -s /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/
-unlink /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/
+sudo unlink /etc/nginx/sites-enabled/default
 
 #Start services
-service nginx start
-service mysql start
-service php7.3-fpm start
+sudo service nginx start
+sudo service mysql start
+sudo service php7.3-fpm start
 
 mysql -u root <<EOF
 UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root' AND plugin = 'unix_socket';
