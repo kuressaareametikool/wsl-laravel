@@ -41,4 +41,4 @@ UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root' AND p
 FLUSH PRIVILEGES;
 CREATE DATABASE Books;
 EOF
-mysql -u root Books < BookStore.sql
+mysql -u root Books < Books.sql
