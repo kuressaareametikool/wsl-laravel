@@ -11,8 +11,6 @@ sudo './install.sh'
 #Configute nginx
 sudo unlink /etc/nginx/sites-enabled/default
 
-cd ~
-
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     if [ "$install" != "${install#[Yy]}" ] ;then
         #Create Laravel Project
@@ -21,16 +19,16 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
         sudo chown -R www-data.www-data /var/www/laravel/storage
         sudo chown -R www-data.www-data /var/www/laravel/bootstrap/cache
     else
-        mkdir -p ~/laravel
+        mkdir  laravel
         sudo chown -R $USER.www-data ~/laravel
-        sudo mv ~/laravel /var/www/
+        sudo mv laravel /var/www/
     fi
     
-    sudo mv ~/wsl-laravel/laravel /etc/nginx/sites-available/
-    sudo ln -s /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/
+    sudo mv laravel-php /etc/nginx/sites-available/
+    sudo ln -s /etc/nginx/sites-available/laravel-php /etc/nginx/sites-enabled/
 else
-    sudo mv ~/wsl-laravel/default /etc/nginx/sites-available/
-    sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+    sudo mv default-php /etc/nginx/sites-available/
+    sudo ln -s /etc/nginx/sites-available/default-php /etc/nginx/sites-enabled/
     sudo chown -R $USER.www-data /var/www/html
 fi
 
