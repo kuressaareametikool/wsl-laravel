@@ -24,7 +24,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
     else
         git clone $github ~/laravel
         sudo chown -R $USER.www-data ~/laravel
-        sudo mv laravel /var/www/
+        sudo mv ~/laravel /var/www/
         sudo chown -R www-data.www-data /var/www/laravel/storage
         sudo chown -R www-data.www-data /var/www/laravel/bootstrap/cache
         cd /var/www/laravel
