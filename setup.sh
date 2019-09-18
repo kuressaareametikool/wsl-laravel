@@ -1,8 +1,11 @@
 #!/bin/bash
 
-read -p "Do you wish to use Laravel?(y/n)" answer
+read -p "Do you wish to use Laravel?(y/n): " answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
-    read -p "Do you also want install Laravel?(y/n)" install
+    read -p "Do you also want install Laravel?(y/n): " install
+    if [ "$install" != "${answer#[Yy]}" ] ;then
+        read -p "Paste in the Github repo link you want to use: " github
+    fi
 fi
 
 sudo chmod +x install.sh
@@ -19,9 +22,16 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
         sudo chown -R www-data.www-data /var/www/laravel/storage
         sudo chown -R www-data.www-data /var/www/laravel/bootstrap/cache
     else
-        mkdir  laravel
+        git clone $github ~/laravel
         sudo chown -R $USER.www-data ~/laravel
         sudo mv laravel /var/www/
+        sudo chown -R www-data.www-data /var/www/laravel/storage
+        sudo chown -R www-data.www-data /var/www/laravel/bootstrap/cache
+        cd /var/www/laravel
+        mv .env.example .env
+        php artisan key:generate
+        comoser install
+        yarn
     fi
     
     sudo mv laravel-php /etc/nginx/sites-available/
