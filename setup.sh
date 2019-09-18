@@ -30,7 +30,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
         cd /var/www/laravel
         mv .env.example .env
         php artisan key:generate
-        comoser install
+        composer install
         yarn
     fi
     
