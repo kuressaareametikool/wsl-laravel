@@ -3,7 +3,7 @@
 read -p "Do you wish to use Laravel?(y/n): " answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     read -p "Do you also want install Laravel?(y/n): " install
-    if [ "$install" != "${install#[Yy]}" ] ;then
+    if [ "$install" == "${install#[Yy]}" ] ;then
         read -p "Paste in the Github repo link you want to use: " github
     fi
 fi
