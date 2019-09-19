@@ -13,6 +13,7 @@ sudo './install.sh'
 
 #Configute nginx
 sudo unlink /etc/nginx/sites-enabled/default
+sudo mv nginx.conf /etc/nginx/
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     if [ "$install" != "${install#[Yy]}" ] ;then
