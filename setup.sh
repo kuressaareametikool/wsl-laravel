@@ -3,7 +3,7 @@
 read -p "Do you wish to use Laravel?(y/n): " answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     read -p "Do you also want install Laravel?(y/n): " install
-    if [ "$install" != "${answer#[Yy]}" ] ;then
+    if [ "$install" != "${install#[Yy]}" ] ;then
         read -p "Paste in the Github repo link you want to use: " github
     fi
 fi
@@ -22,15 +22,16 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
         sudo chown -R www-data.www-data /var/www/laravel/storage
         sudo chown -R www-data.www-data /var/www/laravel/bootstrap/cache
     else
+        #Clone Laravel Project
         git clone $github ~/laravel
         sudo chown -R $USER.www-data ~/laravel
         sudo mv ~/laravel /var/www/
         sudo chown -R www-data.www-data /var/www/laravel/storage
         sudo chown -R www-data.www-data /var/www/laravel/bootstrap/cache
         cd /var/www/laravel
+        composer install
         mv .env.example .env
         php artisan key:generate
-        composer install
         yarn
     fi
     
