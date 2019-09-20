@@ -34,6 +34,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
         mv .env.example .env
         php artisan key:generate
         yarn
+        cd ~/
     fi
     
     sudo mv laravel-php /etc/nginx/sites-available/
